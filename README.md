@@ -28,7 +28,7 @@ Place all the downloaded files under `data/yc2` and uncompress.
 ## Running
 ### Training
 The example command on running a 4-GPU distributed data parallel job:
-```python
+```
 CUDA_VISIBLE_DEVICES=0 python train.py --loss_weighting --obj_interact --checkpoint_path $checkpoint_path --cuda --world_size 4 &
 CUDA_VISIBLE_DEVICES=1 python train.py --loss_weighting --obj_interact --checkpoint_path $checkpoint_path --cuda --world_size 4 &
 CUDA_VISIBLE_DEVICES=2 python train.py --loss_weighting --obj_interact --checkpoint_path $checkpoint_path --cuda --world_size 4 &
