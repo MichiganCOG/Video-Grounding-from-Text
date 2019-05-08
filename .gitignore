@@ -1,0 +1,11 @@
+log/
+checkpoint/
+__pycache__
+
+*.pth
+*.json
+*.t7
+
+*.jpeg
+*.jpg
+*.png

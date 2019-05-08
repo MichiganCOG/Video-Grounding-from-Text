@@ -1,0 +1,19 @@
+Format of JSON yc2_bb_x annotation files
+
+-> database
+ -> [video name]: identifier of video
+  - rwidth: resized width of video, will be 720px
+  - rheight: resized height of video, maintains aspect ratio
+   -> segments
+    ->[segment id]: segment from video with bounding box annotations
+     -> objects
+      ->[object number]: list of annotated object from segment
+       - label: object label name
+       -> boxes
+        ->[frame number]: list of annotated frame from segment
+         - occluded: 0 if object is not occluded, 1 if object is occluded
+	 - ybr: y coordinate of bottom right corner of bounding box
+	 - ytl: y coordinate of top left corner of bounding box
+	 - xbr: x coordinate of bottom right corner of bounding box
+ 	 - outside: 1 if object is outside of the frame, 0 else
+	 - xtl: x coordinate of top left corner of bounding box
