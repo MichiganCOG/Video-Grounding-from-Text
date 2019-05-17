@@ -61,10 +61,10 @@ def compute_ba(attn_weights, rpn_batch, box_batch, obj_batch, box_label_batch, v
             else:
                 misses[o] += 1
 
-            xtl = int(box_coord[0][0].item())
-            ytl = int(box_coord[0][1].item())
-            xbr = int(box_coord[0][2].item())
-            ybr = int(box_coord[0][3].item())
+            xtl = box_coord[0][0].item()
+            ytl = box_coord[0][1].item()
+            xbr = box_coord[0][2].item()
+            ybr = box_coord[0][3].item()
             boxes.append({'xtl':xtl, 'ytl':ytl, 'xbr':xbr, 'ybr':ybr, 'outside':0, 'occluded':0}) 
 
         object_dict['boxes'] = boxes
@@ -74,8 +74,6 @@ def compute_ba(attn_weights, rpn_batch, box_batch, obj_batch, box_label_batch, v
     segment_dict['objects'] = all_objects
 
     print('percentage of frames with box: {}'.format(pos_counter/(pos_counter+neg_counter)))
-    ############# if BA score still doesn't match, try this next line, else delete this
-    #print('hits: {}, misses: {}'.format(hits[o], misses[o]))
     return results, segment_dict
 
 def print_results(ba_score):
