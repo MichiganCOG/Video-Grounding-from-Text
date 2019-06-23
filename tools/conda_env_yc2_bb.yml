@@ -2,7 +2,6 @@ name: yc2-bb
 channels:
   - defaults
 dependencies:
-  - ca-certificates=2019.1.23=0
   - libedit=3.1.20181209=hc058e9b_0
   - libffi=3.2.1=hd88cf55_4
   - libgcc-ng=8.2.0=hdf63c60_1

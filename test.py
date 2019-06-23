@@ -26,6 +26,7 @@ import torchvision.transforms as transforms
 from data.yc2_test_dataset import Yc2TestDataset, yc2_test_collate_fn
 from model.dvsa import DVSA
 from tools.test_util import compute_ba, print_results
+from tools.codalab_eval_grd_yc2bb import YC2BBGrdEval
 
 parser = argparse.ArgumentParser()
 
@@ -59,7 +60,7 @@ parser.add_argument('--seed', default=123, type=int, help='random number generat
 parser.add_argument('--cuda', dest='cuda', action='store_true', help='use gpu')
 
 # Data submisison
-parser.add_argument('--save_to', default='./submission_yc2_bb_val.json', help='Save predictions to this JSON file')
+parser.add_argument('--save_to', default='./res/submission_yc2_bb.json', help='Save predictions to this JSON file')
 
 parser.set_defaults(cuda=False)
 args = parser.parse_args()
@@ -166,14 +167,21 @@ def valid(model, loader):
         for (i,h,m) in ba:
             ba_score[i].append((h, m))
 
-    if not test_mode: #Annotations for the testing split are not publicly available
-        print_results(ba_score)
-
     json_data['database'] = database 
+    if not os.path.isdir('res'):
+        os.mkdir('res')
     with open(args.save_to,'w') as f:
         json.dump(json_data,f)
 
     print('Submission file saved to: {}'.format(args.save_to))
+
+    if not test_mode: #Annotations for the testing split are not publicly available
+        submit_file = args.save_to
+        ref_file = args.box_file
+        class_file = args.class_file 
+
+        grd_evaluator = YC2BBGrdEval(reference_file=ref_file, submission_file=submit_file, class_file=class_file, iou_thresh=0.5, verbose=False)
+        grd_accu = grd_evaluator.gt_grd_eval()
 
 if __name__ == "__main__":
     main(args)
