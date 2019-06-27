@@ -43,7 +43,7 @@ You can download the pre-trained model from [here](http://youcook2.eecs.umich.ed
 ```
 python test.py --start_from ./checkpoint/$model_checkpoint --val_split validation --cuda
 ``` 
-The evaluation server on the test set will be available on Codalab soon.
+The evaluation server on the test set is now available on [Codalab](https://competitions.codalab.org/competitions/23510)!
 
 
 ### Visualization
