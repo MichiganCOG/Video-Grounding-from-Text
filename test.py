@@ -25,7 +25,7 @@ import torchvision.transforms as transforms
 # util
 from data.yc2_test_dataset import Yc2TestDataset, yc2_test_collate_fn
 from model.dvsa import DVSA
-from tools.test_util import compute_ba, print_results
+from tools.test_util import compute_pred
 from tools.codalab_eval_grd_yc2bb import YC2BBGrdEval
 
 parser = argparse.ArgumentParser()
@@ -151,7 +151,7 @@ def valid(model, loader):
         attn_weights = model.output_attn(x_rpn_batch, obj_batch).data
 
         # quantitative results
-        ba, segment_dict = compute_ba(attn_weights, rpn_original_batch, box_batch, obj_batch.data, \
+        segment_dict = compute_pred(attn_weights, rpn_original_batch, box_batch, obj_batch.data, \
             box_label_batch, vis_name, thresh=args.accu_thresh, class_labels_dict=class_labels_dict)
 
         split, rec, video_name, segment = vis_name.split('_-_')
@@ -163,9 +163,6 @@ def valid(model, loader):
             database[video_name]['segments'] = {}
 
         database[video_name]['segments'][int(segment)] = segment_dict
-
-        for (i,h,m) in ba:
-            ba_score[i].append((h, m))
 
     json_data['database'] = database 
     if not os.path.isdir('res'):
