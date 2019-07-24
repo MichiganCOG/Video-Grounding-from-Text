@@ -22,7 +22,7 @@ import torch
 import itertools
 import numpy as np
 from collections import defaultdict
-from tools.recall_util import iou
+from recall_util import iou
 
 from tqdm import tqdm
 
