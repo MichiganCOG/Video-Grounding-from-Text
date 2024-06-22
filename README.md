@@ -19,8 +19,9 @@ python -m spacy download en # to download spacy English model
 Download the followings.
 
 1) The YouCook2-BB annotation pack from the official [website](http://youcook2.eecs.umich.edu/download),
+**[06/22/2024]** Due to requests and inaccessibility of online videos, we are now sharing the raw video files for **non-commercial, research purposes only**. They can be found in Download pages of the offical website.
 
-2) Region proposals [[all-in-one](http://youcook2.eecs.umich.edu/static/dat/yc2_bb/all-box-100.tar.gz)] and feature files for each split [[train(113GB)](http://youcook2.eecs.umich.edu/static/dat/yc2_bb/roi_pooled_feat_train.tar.gz), [val(38GB)](http://youcook2.eecs.umich.edu/static/dat/yc2_bb/roi_pooled_feat_val.tar.gz), [test(17GB)](http://youcook2.eecs.umich.edu/static/dat/yc2_bb/roi_pooled_feat_test.tar.gz)]. You can also extract features/proposals on your own using Faster RCNN [PyTorch](https://github.com/LuoweiZhou/faster-rcnn.pytorch).
+3) Region proposals [[all-in-one](http://youcook2.eecs.umich.edu/static/dat/yc2_bb/all-box-100.tar.gz)] and feature files for each split [[train(113GB)](http://youcook2.eecs.umich.edu/static/dat/yc2_bb/roi_pooled_feat_train.tar.gz), [val(38GB)](http://youcook2.eecs.umich.edu/static/dat/yc2_bb/roi_pooled_feat_val.tar.gz), [test(17GB)](http://youcook2.eecs.umich.edu/static/dat/yc2_bb/roi_pooled_feat_test.tar.gz)]. You can also extract features/proposals on your own using Faster RCNN [PyTorch](https://github.com/LuoweiZhou/faster-rcnn.pytorch).
 
 Place all the downloaded files under `data/yc2` and uncompress.
 
